@@ -1,0 +1,6 @@
+__pycache__/
+.DS_STORE
+.idea/
+kill_reason.txt
+websocket_server/
+basebot.py

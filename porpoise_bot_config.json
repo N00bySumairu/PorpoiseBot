@@ -1,0 +1,36 @@
+{
+  "imgs": [
+    "imgur.com/skUxNRb",
+    "imgur.com/WmVFmNV",
+    "imgur.com/QtEupoL",
+    "imgur.com/EGekNzl",
+    "imgur.com/NfSdop9",
+    "imgur.com/GnNTpck",
+    "imgur.com/iuhC5uQ",
+    "imgur.com/nSyPnPN",
+    "imgur.com/sQXthB4",
+    "imgur.com/KS73jOZ",
+    "imgur.com/CCQ71jF",
+    "imgur.com/c8CHtHq",
+    "imgur.com/9JF3rCI",
+    "imgur.com/vaodcpV",
+    "imgur.com/gGimwSX",
+    "imgur.com/IlbMyBR",
+    "imgur.com/A4rB3fn",
+    "imgur.com/v2cSKEV",
+    "imgur.com/ZcDh8UD",
+    "imgur.com/ngegBWt",
+    "imgur.com/aKoxe1Z",
+    "imgur.com/RX2OtNJ",
+    "imgur.com/UknwxPd",
+    "imgur.com/ny8tHJW",
+    "imgur.com/ZgkcmiY"
+  ],
+  "wat_imgs": [
+    "imgur.com/CKvLgbO",
+    "imgur.com/I3kA31e"
+  ],
+  "short_help": "/me is a bot created by @Sumairu for testing porpoises.",
+  "long_help": "I am a bot created by @Sumairu for testing porpoises.\nIt reacts to the following commands:\n\t!porpoise → Image of a porpoise (or a visually similar animal)\n\t!help [ @§nickname§ ] → Help message\n\t!uptime @§nickname§ → Uptime of the bot\nIt also has some easter eggs waiting to be found.\nIf it is no longer funny, notify @Sumairu and they shall deal with it.",
+  "pong": "imgur.com/EQHOmTX"
+}
