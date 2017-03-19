@@ -31,6 +31,10 @@
     "imgur.com/I3kA31e"
   ],
   "short_help": "/me is a bot created by @Sumairu for testing porpoises.",
-  "long_help": "I am a bot created by @Sumairu for testing porpoises.\nIt reacts to the following commands:\n\t!porpoise → Image of a porpoise (or a visually similar animal)\n\t!help [ @§nickname§ ] → Help message\n\t!uptime @§nickname§ → Uptime of the bot\nIt also has some easter eggs waiting to be found.\nIf it is no longer funny, notify @Sumairu and they shall deal with it.",
-  "pong": "imgur.com/EQHOmTX"
+  "long_help": "I am a bot created by @Sumairu for testing porpoises.\nIt reacts to the following commands:\n\t!porpoise → Image of a porpoise (or a visually similar animal)\n\t!help [ @{self.nickname} ] → Help message\n\t!uptime @{self.nickname} → Uptime of the bot\nIt also has some easter eggs waiting to be found.\nIf it is no longer funny, notify @Sumairu and they shall deal with it.",
+  "ping_text": "imgur.com/EQHOmTX",
+  "spec_ping_text": "imgur.com/EQHOmTX",
+  "do_uptime": true,
+  "kill_text": "/me sees themselves out... :(",
+  "kill_no_reason_text": "@{sender} if you wish to remove me, please give a reason as follows: !kill @{self.nickname} <reason>"
 }
