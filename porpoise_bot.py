@@ -4,6 +4,7 @@
 # @PorpoiseBot -- Euphoria bot responsible for posting images of porpoises (or visually similar animals).
 #                 An image is requested using !porpoise
 #
+import time
 import datetime
 import io
 import json
@@ -99,7 +100,7 @@ class PorpoiseBot(basebot.Bot):
                 else:
                     reply('/me is up since %s (%s)' % (
                         basebot.format_datetime(self.started),
-                        basebot.format_delta(datetime.time() - self.started)))
+                        basebot.format_delta(time.time() - self.started)))
         elif cmdline[0] == '!kill' and len(cmdline) > 1 and self.nick_matches(cmdline, normnick):
             if len(cmdline) == 2:
                 reply(self.kill_no_reason_text)
