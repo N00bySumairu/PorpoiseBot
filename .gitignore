@@ -4,3 +4,4 @@ __pycache__/
 kill_reason.txt
 websocket_server/
 basebot.py
+_basebot/

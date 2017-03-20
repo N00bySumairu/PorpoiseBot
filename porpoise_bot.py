@@ -12,6 +12,7 @@ import random
 import re
 
 import basebot
+from basebot import normalize_nick, format_datetime, format_delta
 
 DELAY = 600.0
 
@@ -50,37 +51,34 @@ class PorpoiseBot(basebot.Bot):
         See BaseBot.handle_command() for details.
         Overridden to implement the botrulez commands.
         """
-
         # Convenience function for choosing a reply and sending it.
         def reply(text, alttext=None):
             if text is Ellipsis:
                 text = alttext
+            self._log_command(cmdline)
             if text is not None:
                 self.send_chat(text.format(**meta), meta['msgid'])
-
         # Convenience function for checking if the command is specific and
         # matches myself.
         def nick_matches():
             if len(cmdline) != 2:
                 return False
             ms = cmdline[1]
-            if not ms.startswith('@'):
-                return False
-            nn = basebot.normalize_nick(ms[1:])
+            if not ms.startswith('@'): return False
+            nn = normalize_nick(ms[1:])
             if nn == normnick:
                 return True
             for i in self.aliases:
-                if nn == basebot.normalize_nick(i):
+                if nn == normalize_nick(i):
                     return True
             return False
-
         # Call parent class method.
-        basebot.BaseBot.handle_command(self, cmdline, meta)
+        BaseBot.handle_command(self, cmdline, meta)
         # Don't continue if no command or explicitly forbidden.
         if not cmdline or not self.do_stdcommands:
             return
         # Used in nick_matches().
-        normnick = basebot.normalize_nick(self.eff_nickname or self.nickname or '')
+        normnick = normalize_nick(self.eff_nickname or self.nickname or '')
         # Actual commands.
         if cmdline[0] == '!ping':
             if len(cmdline) == 1:
@@ -94,13 +92,13 @@ class PorpoiseBot(basebot.Bot):
                 reply(self.long_help, self.short_help)
         elif cmdline[0] == '!uptime':
             if (self.do_gen_uptime and len(cmdline) == 1 or
-                        self.do_uptime and nick_matches()):
+                    self.do_uptime and nick_matches()):
                 if self.started is None:
                     reply("/me Uptime information is N/A")
                 else:
-                    reply('/me is up since %s (%s)' % (
-                        basebot.format_datetime(self.started),
-                        basebot.format_delta(time.time() - self.started)))
+                    reply('/me has been up since %s (%s)' % (
+                        format_datetime(self.started),
+                        format_delta(time.time() - self.started)))
         elif cmdline[0] == '!kill' and len(cmdline) > 1 and self.nick_matches(cmdline, normnick):
             if len(cmdline) == 2:
                 reply(self.kill_no_reason_text)
