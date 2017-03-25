@@ -5,3 +5,4 @@ kill_reason.txt
 websocket_server/
 basebot.py
 _basebot/
+log.txt

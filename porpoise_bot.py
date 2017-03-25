@@ -1,15 +1,15 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # @PorpoiseBot -- Euphoria bot responsible for posting images of porpoises (or visually similar animals).
 #                 An image is requested using !porpoise
 #
-import time
 import datetime
 import io
 import json
 import random
 import re
+import time
 
 import basebot
 from basebot import normalize_nick, format_datetime, format_delta
@@ -41,8 +41,7 @@ class PorpoiseBot(basebot.Bot):
         self.add_command_handler("porpoise", self.porpoise_handler)
         self.add_chat_handler(self.chat_handler)
 
-    # overwrite as basebot.Bot doesn't format the text to be sent with the contents of meta
-    # this is needed for the long_help text
+    # basebot.Bot's handle_command method, adapted to this bot
     def handle_command(self, cmdline, meta):
         """
         handle_command(cmdline, meta) -> None
@@ -58,13 +57,15 @@ class PorpoiseBot(basebot.Bot):
             self._log_command(cmdline)
             if text is not None:
                 self.send_chat(text.format(**meta), meta['msgid'])
+
         # Convenience function for checking if the command is specific and
         # matches myself.
         def nick_matches():
             if len(cmdline) != 2:
                 return False
             ms = cmdline[1]
-            if not ms.startswith('@'): return False
+            if not ms.startswith('@'):
+                return False
             nn = normalize_nick(ms[1:])
             if nn == normnick:
                 return True
@@ -73,7 +74,7 @@ class PorpoiseBot(basebot.Bot):
                     return True
             return False
         # Call parent class method.
-        BaseBot.handle_command(self, cmdline, meta)
+        basebot.BaseBot.handle_command(self, cmdline, meta)
         # Don't continue if no command or explicitly forbidden.
         if not cmdline or not self.do_stdcommands:
             return
