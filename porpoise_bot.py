@@ -7,8 +7,10 @@
 import datetime
 import io
 import json
+import os
 import random
 import re
+import signal
 import time
 
 import basebot
@@ -149,9 +151,20 @@ class PorpoiseBot(basebot.Bot):
 
 # Main function. Calls basebot.run_main()
 def main():
-    json_config = json.load(io.open("./{}_config.json".format(PorpoiseBot.BOTNAME), 'rt'))
+    # Make sure only one instance is running / interrupt the running one
+    if os.path.isfile('./pid.txt'):
+        with open('./pid.txt', 'rt') as pid_file:
+            pid = int(next(pid_file))
+            if pid is not None:
+                os.kill(pid, signal.SIGINT)
+    # write own pid to file
+    with open('./pid.txt', 'wt') as pid_file:
+        pid_file.write(str(os.getpid()))
+    with open("./{}_config.json".format(PorpoiseBot.BOTNAME), 'rt') as json_file:
+        json_config = json.load(json_file)
     basebot.run_main(PorpoiseBot, **json_config)
-
+    # remove file, as process will end
+    os.remove('./pid.txt')
 
 if __name__ == '__main__':
     main()

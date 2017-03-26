@@ -6,3 +6,4 @@ websocket_server/
 basebot.py
 _basebot/
 log.txt
+pid.txt
